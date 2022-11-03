@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import "./variables.scss";
+@import "./mixins.scss";
+*{
+    margin: 0;
+    padding: 0;
+    font-family: $inter;
+}
+body{
+    background-color: #1E1E1E;
+}
+.container{
+    width: 1155px;
+    margin: auto;
+}
+@media (max-width: 1200px){
+    .container{
+        max-width: 970px;
+        text-align: center;
+
+        section{
+            text-align: left;
+            max-width: 600px;
+            margin: auto;
+        }
+        .headerImg{
+            float: none;
+            margin-top: 40px;
+        }
+
+        .main-text{
+            h3{
+                @include titles($color: $importantTextColor, $fontSize: $h3Size, $marginT: 80px);
+            }
+        
+        }
+
+        .infoBlock{
+            float: none;
+            margin: auto;
+            text-align: left;
+        }
+
+        .placementContainer{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .additionalPlacementBox{
+            margin-top: 20px;
+        }
+
+    }
+}
+@media (max-width: 992px){
+    .container{
+        max-width: 750px;
+    }
+}
+
+.enrollBtn{ //enroll buttons
+        line-height: 32px;
+        padding: 8px 32px;
+        background: $importantTextColor;
+        font-weight: 700;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        @include titles ($color:$whiteColor, $marginT:53px);
+
+        &:nth-child(3){
+            background-color: transparent;
+            color: $importantTextColor;
+            border: 2px solid $importantTextColor;
+        }
+} 
+.enrollWindow-overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease-in-out;
+}
+.enrollWindow{
+        background-color: #1E1E1E;
+        width: 600px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        text-align: center;
+        border-radius: 15px;
+
+        h4{
+            @include titles ($color: $titlesColor, $fontSize: $h4Size, $marginT: 50px);
+        }
+
+        .inputs{
+            display: inline-block;
+            input{
+                width: 70%;
+                height: 50px;
+                margin-top: 20px;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                padding-left: 10px;
+                box-sizing: border-box;
+            }
+            .enrollBtn{
+                margin-top: 10px;
+            }
+        }
+    }
+.enrollWindow-overlay--visible{
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s ease-in-out;
+}
+.enrollWindow--visible{
+    display: block;
+}
+
+header{ //header
+    margin-top: 60px;
+
+    .header-text{
+        width: 400px;
+        display: inline-block;
+
+        p{
+            padding: 8px 16px;
+            background-color: $backgroundColor;
+            border-radius: 3px;
+            @include titles ($color: $pointsColor);
+        }
+
+        h1{
+            @include titles($color: $importantTextColor, $fontSize: $h1Size, $marginT: 37px);
+        }
+        h2{
+            @include titles($color: $mainTextColor, $fontSize: $h2Size, $marginT: 14px);
+        }
+    }
+
+    .headerImg{
+        float: right;
+        height: 350px;
+    }
+}
+
+main{ //main
+    margin-top: 80px;
+
+    .infoBlock{
+        width: 340px;
+        float: right;
+
+        .textBlock{
+            background-color: $backgroundColor;
+            padding: 10px 25px;
+            border-radius: 5px;
+
+            p{
+                @include titles($color: $titlesColor, $fontSize: 18px, $marginT: 0);
+                line-height: 28px;
+                &:first-child{
+                    @include titles($color: $whiteColor, $fontSize: 18px, $marginT: 0);
+                }
+            }
+        }
+
+        .imgBlock{
+            position: relative;
+            margin-top: 25px;
+
+            img{
+                width: 340px;
+            }
+            
+            .imageTextBlock{
+                position: absolute;
+                bottom: 15px;
+                left: 20px;
+                background-color: transparent;
+
+                h4{
+                    @include titles($color: $titlesColor, $fontSize: $h4Size, $marginT: 0);
+                }
+                p{
+                    @include titles($color: $whiteColor, $marginT: 0);
+                    font-weight: 700;
+                }
+            }
+        }
+        }
+
+    .main-text{
+        display: inline-block;
+        width: 730px;
+        line-height: 24px;
+        h3{
+        @include titles($color: $importantTextColor, $fontSize: $h3Size, $marginT: 0);
+        }
+        h4{
+            @include titles($color: $titlesColor, $fontSize: $h4Size, $marginT: 24px);
+        }
+        p{
+            @include titles($color: $mainTextColor, $marginT: 10px);
+        }
+        ul{
+            li{
+                list-style-type: none;
+                @include titles($color: $mainTextColor, $marginT: 0);
+            }
+            span{
+                &:nth-child(even){
+                    color: $pointsColor;
+                }
+                &:nth-child(odd){
+                    color: $importantTextColor;
+                }
+            }
+            &:last-child{
+                margin-top: 10px;
+            }
+        }
+        em{
+            @include titles($color: $footnoteColor);
+        }
+    }
+}
+
+footer{ //footer
+    h4{
+        @include titles($color: $titlesColor, $fontSize: $h4Size, $marginT: 24px);
+        font-weight: 600;
+    }
+    .placementContainer{
+        display: flex;
+        justify-content: space-between;
+        }
+    .placementBox{
+        display: inline-block;
+        box-sizing: border-box;
+        width: 255px;
+        height: 90px;
+        padding: 15px 20px;
+        background-color: $backgroundColor;
+        border-radius: 5px;
+        margin-top: 10px;
+
+        h4{
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        &:nth-child(5){
+            p{
+                img{
+                    vertical-align: middle;
+                    margin-right: 16px;
+                }
+            }
+        }
+    }
+    p{
+        @include titles($color: $importantTextColor, $fontSize: 20px, $marginT: 0);
+        font-weight: 600;
+    }
+
+    .accordeon{
+        background-color: $backgroundColor;
+        margin-top: 20px;
+        box-sizing: border-box;
+        padding: 15px 20px;
+        border-radius: 5px;
+        color: $titlesColor;
+        font-size: 20px;
+        cursor: pointer;
+        
+        .accordeon__control{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none;
+
+            p{
+                @include titles($color: $titlesColor, $fontSize: 20px, $marginT: 0);
+            }
+        }
+
+        .accordeon__content{
+            margin-top: 10px;
+
+            ul{
+                li{
+                    list-style: none;
+                    font-size: 18px;
+                }
+                span{
+                    &:nth-child(even){
+                        color: $pointsColor;
+                    }
+                    &:nth-child(odd){
+                        color: $importantTextColor;
+                    }
+                }
+            }
+        }
+    }
+}
